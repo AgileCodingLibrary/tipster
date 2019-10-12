@@ -15,65 +15,65 @@ namespace FazTipster.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        public ActionResult Index()
-        {
-            return View(db.Tips.ToList());
-        }
+        //public ActionResult Index()
+        //{
+        //    return View(db.Tips.ToList());
+        //}
 
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return RedirectToAction("Index");
-            }
+        //public ActionResult Details(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return RedirectToAction("Index");
+        //    }
 
-            Tips tips = db.Tips.Find(id);
+        //    Tips tips = db.Tips.Find(id);
+        //    if (tips == null)
+        //    {
+        //        tips = db.Tips.FirstOrDefault();               
+        //    }
 
-            if (tips == null)
-            {
-                tips = db.Tips.FirstOrDefault();
-                if (tips == null)
-                {
-                    return RedirectToAction("Create");
-                }
-            }
-
-            return View(tips);
-        }
+        //    return View(tips);
+        //}
 
 
-        public ActionResult Create()
-        {
-            return View();
-        }
+        //public ActionResult Create()
+        //{
+        //    return View();
+        //}
 
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,AndyTipsterTips,IrishHorseTips,UltimateTips")] Tips tips)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Tips.Add(tips);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Create([Bind(Include = "Id,AndyTipsterTips,IrishHorseTips,UltimateTips")] Tips tips)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.Tips.Add(tips);
+        //        db.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
 
-            return View(tips);
-        }
+        //    return View(tips);
+        //}
 
         public ActionResult Edit(int? id)
         {
+            Tips tips = null;
+
             if (id == null)
             {
-                return RedirectToAction("Index");
+                tips = db.Tips.FirstOrDefault();
             }
-            Tips tips = db.Tips.Find(id);
-
-            if (tips == null)
+            else
             {
-                return RedirectToAction("Index");
-            }
+                tips = db.Tips.Find(id);
+
+                if (tips == null)
+                {
+                    tips = db.Tips.FirstOrDefault();
+                }
+            }          
  
             return View(tips);
         }
@@ -95,30 +95,30 @@ namespace FazTipster.Controllers
         }
 
         // GET: Tips/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Tips tips = db.Tips.Find(id);
-            if (tips == null)
-            {
-                return HttpNotFound();
-            }
-            return View(tips);
-        }
+        //public ActionResult Delete(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    Tips tips = db.Tips.Find(id);
+        //    if (tips == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(tips);
+        //}
 
         // POST: Tips/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Tips tips = db.Tips.Find(id);
-            db.Tips.Remove(tips);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult DeleteConfirmed(int id)
+        //{
+        //    Tips tips = db.Tips.Find(id);
+        //    db.Tips.Remove(tips);
+        //    db.SaveChanges();
+        //    return RedirectToAction("Index");
+        //}
 
         protected override void Dispose(bool disposing)
         {
