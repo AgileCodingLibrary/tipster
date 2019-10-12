@@ -1,0 +1,28 @@
+﻿@model FazTipster.ViewModels.UpdateEmailSendViewModel
+@{
+    ViewBag.Title = "Update email sent consent";
+}
+
+<h2>@ViewBag.Title.</h2>
+
+
+@using (Html.BeginForm("UpdateEmailSent", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+    <hr />
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+<div class="form-group">
+    @Html.CheckBoxFor(m => m.SendEmails) If checked you will receive emails. Un-check to stop receiving emails.
+
+</div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Update" class="btn btn-default" />
+        </div>
+    </div>
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

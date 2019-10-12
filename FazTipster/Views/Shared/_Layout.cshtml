@@ -1,0 +1,233 @@
+﻿
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Andy Tipster</title>
+    <meta name="description" content="Andy Tipster - The Number One in Sports Tips, Make The Most out of Your Bets.">
+    <meta name="keywords" content="  Sports Betting, Horse Racing, Gambling, Tipster, Profit, Winners, Andy Tipster">
+    <meta name="author" content="agilecoding.com">
+
+    <!-- Custom styles for this template -->
+    <link href="~/Content/Template/css/style.css" rel="stylesheet">
+    @*<link href="~/public/css/responsive.css" rel="stylesheet">
+        <link href="~/Public/css/wizard.min.css" rel="stylesheet" />*@
+
+    <link href="~/Content/Template/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="~/Content/Template/css/font-awesome.min.css" rel="stylesheet" media="screen">
+    <link href="~/Content/Template/css/animate.min.css" rel="stylesheet" media="screen">
+    <link href="~/Content/Template/css/lightbox.css" rel="stylesheet" media="screen">
+    <link href="~/Content/Template/css/syntax/shCore.css" rel="stylesheet" media="screen">
+    <link href="~/Content/Template/css/syntax/shThemeDefault.css" rel="stylesheet" media="screen">
+
+    <link href="~/Content/Template/css/style.css" rel="stylesheet" media="screen">
+    <link href="~/Content/Template/css/color-default.css" rel="stylesheet" media="screen" title="default">
+    <link href="~/Content/Template/css/width-full.css" rel="stylesheet" media="screen" title="default">
+
+    <!-- TinyMCE Script Reference -->
+   
+    <script src="~/scripts/tinymce/tinymce.min.js"></script>
+    <!-- Script to wire up your TinyMCE editor -->
+    @*<script type="text/javascript">
+        // Initialize your tinyMCE Editor with your preferred options
+        tinyMCE.init({
+            // General options
+            mode: "textareas",
+            theme: "modern",
+            // Theme options
+            theme_advanced_buttons1: "save,newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
+            theme_advanced_buttons2: "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview,|,forecolor,backcolor",
+            theme_advanced_buttons3: "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,print,|,ltr,rtl,|,fullscreen",
+            theme_advanced_buttons4: "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,visualchars,nonbreaking,template,blockquote,pagebreak,|,insertfile,insertimage",
+            theme_advanced_toolbar_location: "top",
+            theme_advanced_toolbar_align: "left",
+            theme_advanced_statusbar_location: "bottom",
+            theme_advanced_resizing: true,
+
+            // Example content CSS (should be your site CSS)
+            content_css: "css/example.css",
+        });
+    </script>*@
+
+
+
+    @*@Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")*@
+
+</head>
+
+<script>
+    window.fbAsyncInit = function () {
+        FB.init({
+            appId: '910702312285636',
+            xfbml: true,
+            version: 'v2.5'
+        });
+    };
+
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) { return; }
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+<div class="boxed animated fadeIn animation-delay-5">
+
+    <header id="header" class="hidden-xs">
+        <div class="container">
+            <div id="header-title">
+                <!--<h1 class="animated fadeInDown"><a href="../index.html">Andy<span>tipster</span></a></h1>-->
+                <h1 class="animated ">
+                    <a href="@Url.Action("Index", "Home")">Andy<span>tipster</span></a>
+                </h1>
+                <p class="animated fadeInLeft">The Number One in Sports Tips, Make The Most out of Your Bets.</p>
+            </div>
+        </div> <!-- container -->
+    </header> <!-- header -->
+
+    <nav class="navbar navbar-static-top navbar-mind" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <a class="navbar-brand visible-xs" href="@Url.Action("Index", "Home")">Andy<span>tipster</span></a>
+
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-mind-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <i class="fa fa-bars fa-inverse"></i>
+                </button>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-mind-collapse" id="bs-example-navbar-collapse-1">
+
+                @*public pages*@
+                <ul class="nav navbar-nav nav-left">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("FAQ", "Faq", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li><a href="">Facebook</a></li>
+
+                    @*Paid pages*@
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tips<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("AndyTipster Tips", "AndyTipsterTips", "Home")</li>
+                                <li>@Html.ActionLink("Irish Racing Tips", "IrishRacingTips", "Home")</li>
+                                <li>@Html.ActionLink("Ultimate Pack Tips", "UltimatePackTips", "Home")</li>
+                            </ul>
+                        </li>
+                    }
+
+                    @*Admin pages*@
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("Masteradmin"))
+                    {
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                @*<li>@Html.ActionLink("Billing Plans", "Index", "BillingPlans")</li>
+                    <li>@Html.ActionLink("Subscriptions", "Index", "Subscription")</li>*@
+                                <li>@Html.ActionLink("Subscribers", "Index", "Subscribers")</li>
+
+                                @*<li>@Html.ActionLink("About", "Index", "Abouts")</li>*@
+                                <li>@Html.ActionLink("FAQ Admin", "Index", "Questions")</li>
+                                <li>@Html.ActionLink("Download Emails", "EmailList", "Home")</li>
+                                <li>@Html.ActionLink("Edit Tips", "Edit", new { controller = "Tips", id = 1 })</li>
+                                <li>@Html.ActionLink("Edit About", "Edit", new { controller = "Abouts", id = 1 })</li>
+
+                            </ul>
+                        </li>
+                    }
+
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li> @Html.Partial("_LoginPartial")</li>
+                </ul>
+
+            </div><!-- navbar-collapse -->
+        </div> <!-- container -->
+    </nav> <!-- navbar navbar-default -->
+
+
+
+    <div>
+
+
+        <!-- InstanceBeginEditable name="contents" -->
+        <br />
+        <div class="container body-content">
+            @RenderBody()
+        </div>
+
+        <footer id="footer" style="margin-top:50px;">
+
+            <p>&copy; 2016 <a href="#">www.andytipster.com</a>, inc. All rights reserved.</p>
+            <p>Designed and Maintained By <a href="http://www.agilecoding.com/">agilecoding.com: Simple but Smart</a>.</p>
+        </footer>
+
+    </div> <!-- boxed -->
+    <!-- Scripts -->
+    <script src="~/Content/Template/js/jquery-1.10.2.min.js"></script>
+    <script src="~/Content/Template/js/jquery.cookie.js"></script>
+    <script src="~/Content/Template/js/bootstrap.min.js"></script>
+    <script src="~/Content/Template/js/jquery.mixitup.min.js"></script>
+    <script src="~/Content/Template/js/lightbox-2.6.min.js"></script>
+    <script src="~/Content/Template/js/holder.js"></script>
+    <script src="~/Content/Template/js/app.js"></script>
+    <script src="~/Content/Template/js/styleswitcher.js"></script>
+
+    <script src="~/Content/Template/js/syntax/shCore.js"></script>
+    <script src="~/Content/Template/js/syntax/shBrushXml.js"></script>
+    <script src="~/Content/Template/js/syntax/shBrushJScript.js"></script>
+
+    @*<script type="text/javascript">
+            SyntaxHighlighter.all()
+        </script>*@
+
+    <!--chatme script-->
+    @*<script src="https://repository.chatwee.com/scripts/d0755815b0dd84cb0c18cf36b1b89171.js" type="text/javascript" charset="UTF-8"></script>*@
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    </body>
+
+    </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

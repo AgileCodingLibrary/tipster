@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = "Contact";
+}
+
+
+<div class="col-xs-12">
+    <p class="lead lead-lg text-center animated bounceInLeft animation-delay-12">Got a <strong>question</strong>. or a <br><strong>suggestion</strong>, feel free to contact us.</p>
+</div>
+
+<div class="row">
+
+    <form name="contactform" method="post" action="faz-send-form.php" accept-charset="UTF-8">
+
+        <div class="form-group">
+            <label for="InputName">First Name</label>
+            <input type="text" class="form-control" id="first_name" name="first_name" maxlength="50" size="30">
+        </div>
+
+        <div class="form-group">
+            <label for="InputName">Last Name</label>
+            <input type="text" class="form-control" id="last_name" name="last_name" maxlength="50" size="30">
+        </div>
+
+
+        <div class="form-group">
+            <label for="InputName">Email Address</label>
+            <input type="email" class="form-control" id="email" name="email" maxlength="80" size="30">
+        </div>
+
+        <!--   <div class="form-group">
+               <label for="telephone">Telephone Number</label>
+               <input type="text" class="form-control" id="telephone" name="telephone" maxlength="30" size="30">
+           </div> -->
+
+
+        <div class="form-group">
+            <label for="comments">Comments</label>
+            <textarea name="comments" id="comments" class="form-control" rows="5"></textarea>
+        </div>
+
+        <input type="submit" value="Submit">
+
+
+
+    </form>
+
+
+</div>

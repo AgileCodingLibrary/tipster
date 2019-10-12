@@ -1,0 +1,81 @@
+﻿@model FazTipster.Entities.About
+
+@{
+    ViewBag.Title = "About";
+}
+
+@if (Model != null)
+{ 
+    <div class="row">
+        <div class="col-xs-12">
+            <p class="lead lead-lg text-center animated bounceInLeft animation-delay-12"><strong>@Model.Header</strong></p>
+        </div>
+
+        <div class="col-md-12">
+            <section class="animated fadeInDown animation-delay-8">
+                @*<h2 class="section-title">@Model.Header</h2>*@
+
+                <p class="p-lg">
+
+                    @Model.FirstTopParagraph  <br />
+                    @Model.SecondTopParagraph <br />
+
+
+            </section>
+            <section class="animated fadeIn animation-delay-10">
+                <h3 class="section-title">@Model.PackagesTitle</h3>
+                <div class="panel-group" id="accordion">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                    @Model.PackageOneHeading
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseOne" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                @Model.PackageOneDetails
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" class="collapsed">
+                                    @Model.PackageTwoHeading
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseTwo" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                @Model.PackageTWoDetails
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" class="collapsed">
+                                    @Model.PackageThreeHeading
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseThree" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                @Model.PackageThreeDetails
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </div>
+}
+else
+{
+    <h2>There is no information to display on this page.</h2>
+}
+
+
