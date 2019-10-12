@@ -70,7 +70,11 @@ namespace FazTipster.Controllers
             About about = db.Abouts.Find(id);
             if (about == null)
             {
-                return HttpNotFound();
+                about = db.Abouts.FirstOrDefault();
+            }
+            else
+            {
+                about = new About();
             }
             return View(about);
         }

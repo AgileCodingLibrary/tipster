@@ -15,36 +15,39 @@ namespace FazTipster.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Tips
         public ActionResult Index()
         {
             return View(db.Tips.ToList());
         }
 
-        // GET: Tips/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("Index");
             }
+
             Tips tips = db.Tips.Find(id);
+
             if (tips == null)
             {
-                return HttpNotFound();
+                tips = db.Tips.FirstOrDefault();
+                if (tips == null)
+                {
+                    return RedirectToAction("Create");
+                }
             }
+
             return View(tips);
         }
 
-        // GET: Tips/Create
+
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Tips/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,AndyTipsterTips,IrishHorseTips,UltimateTips")] Tips tips)
@@ -59,18 +62,19 @@ namespace FazTipster.Controllers
             return View(tips);
         }
 
-        // GET: Tips/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("Index");
             }
             Tips tips = db.Tips.Find(id);
+
             if (tips == null)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
+ 
             return View(tips);
         }
 

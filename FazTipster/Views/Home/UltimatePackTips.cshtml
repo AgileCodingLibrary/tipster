@@ -7,5 +7,12 @@
     <p class="lead lead-lg text-center animated bounceInLeft animation-delay-12"><strong>Ultimate Package Tips</strong></p>
 </div>
 
-<h2 class="lead lead-lg text-center animated bounceInLeft animation-delay-12">@Model.UltimateTips</h2>
 
+@if (Model != null)
+{
+<h2 class="lead lead-lg text-center animated bounceInLeft animation-delay-12">@Model.UltimateTips</h2>
+}
+else
+{
+    <h2 class="lead lead-lg text-center animated bounceInLeft animation-delay-12">"No Tips have been found."</h2>
+}
