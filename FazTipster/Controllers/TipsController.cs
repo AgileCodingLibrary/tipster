@@ -15,10 +15,11 @@ namespace FazTipster.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        //public ActionResult Index()
-        //{
-        //    return View(db.Tips.ToList());
-        //}
+        public ActionResult Index()
+        {
+            //return View(db.Tips.ToList());
+            return RedirectToAction("Index");
+        }
 
         //public ActionResult Details(int? id)
         //{
@@ -89,7 +90,7 @@ namespace FazTipster.Controllers
             {
                 db.Entry(tips).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { controller = "Home"});
             }
             return View(tips);
         }

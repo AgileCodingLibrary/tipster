@@ -1,19 +1,23 @@
 ﻿@model FazTipster.Entities.Tips
 @{
+    /**/
+
     ViewBag.Title = "AndyTipsterTips";
 }
 
-<div class="col-xs-12">
+@*<div class="col-xs-12">
     <p class="lead lead-lg text-center animated bounceInLeft animation-delay-12"><strong>Andy Tipster Tips</strong></p>
-</div>
+</div>*@
 
 @if (Model != null)
 {
-    <h2 class="lead lead-lg text-center animated bounceInLeft animation-delay-12">@Model.AndyTipsterTips</h2>
+    <div class="col-xs-12">
+        @Html.Raw(Model.AndyTipsterTips)
+    </div>
 }
 else
 {
-<h2 class="lead lead-lg text-center animated bounceInLeft animation-delay-12">"No Tips have been found."</h2>
+    <h2 class="lead lead-lg text-center animated bounceInLeft animation-delay-12">"No Tips have been found."</h2>
 }
 
 

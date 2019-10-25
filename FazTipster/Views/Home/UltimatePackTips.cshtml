@@ -3,14 +3,16 @@
     ViewBag.Title = "UltimatePackTips";
 }
 
-<div class="col-xs-12">
+@*<div class="col-xs-12">
     <p class="lead lead-lg text-center animated bounceInLeft animation-delay-12"><strong>Ultimate Package Tips</strong></p>
-</div>
+</div>*@
 
 
 @if (Model != null)
 {
-<h2 class="lead lead-lg text-center animated bounceInLeft animation-delay-12">@Model.UltimateTips</h2>
+       <div class="col-xs-12">
+        @Html.Raw(Model.UltimateTips)
+    </div>
 }
 else
 {

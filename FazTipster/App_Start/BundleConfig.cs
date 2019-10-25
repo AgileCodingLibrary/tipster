@@ -29,6 +29,7 @@ namespace FazTipster
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Contents/Template/js/bootstrap.js"));
 
+       
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/Template/css/bootstrap.css",
                       "~/Content/site.css"));
