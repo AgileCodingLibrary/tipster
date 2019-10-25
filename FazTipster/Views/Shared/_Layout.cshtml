@@ -22,7 +22,7 @@
     <link href="~/Content/Template/css/style.css" rel="stylesheet" media="screen">
     <link href="~/Content/Template/css/color-default.css" rel="stylesheet" media="screen" title="default">
     <link href="~/Content/Template/css/width-full.css" rel="stylesheet" media="screen" title="default">
- 
+
     <script src="~/Scripts/ckeditor/ckeditor.js"></script>
 </head>
 
@@ -103,14 +103,14 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin<b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     @*<li>@Html.ActionLink("Billing Plans", "Index", "BillingPlans")</li>
-                                        <li>@Html.ActionLink("Subscriptions", "Index", "Subscription")</li>*@
+        <li>@Html.ActionLink("Subscriptions", "Index", "Subscription")</li>*@
                                     <li>@Html.ActionLink("Subscribers", "Index", "Subscribers")</li>
 
-
-                                    <li>@Html.ActionLink("FAQ Admin", "Index", "Questions")</li>
-                                    <li>@Html.ActionLink("Download Emails", "EmailList", "Home")</li>
-                                    <li>@Html.ActionLink("Edit Tips", "Edit", new { controller = "Tips", id = 1 })</li>
+                                    <li>@Html.ActionLink("Edit Home", "Edit", "LandingPages")</li>
                                     <li>@Html.ActionLink("Edit About", "Edit", new { controller = "Abouts", id = 1 })</li>
+                                    <li>@Html.ActionLink("Edit FAQ", "Index", "Questions")</li>
+                                    <li>@Html.ActionLink("Edit Tips", "Edit", new { controller = "Tips", id = 1 })</li>
+                                    <li>@Html.ActionLink("Download Emails", "EmailList", "Home")</li>
 
                                 </ul>
                             </li>
@@ -165,7 +165,7 @@
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 
-   
+
 </body>
 
 </html>

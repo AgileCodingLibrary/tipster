@@ -17,7 +17,8 @@ namespace FazTipster.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            var landingPage = _dbContext.LandingPages.FirstOrDefault();
+            return View(landingPage);
         }
 
         [Authorize]

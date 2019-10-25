@@ -24,6 +24,16 @@ namespace FazTipster.Migrations
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
 
+            if (!context.LandingPages.Any())
+            {
+                Entities.LandingPage landingPage = new Entities.LandingPage();
+                landingPage.LandingPageHtml = "<p>Site Admin needs to add landing page contents.";
+                context.LandingPages.Add(landingPage);
+                context.SaveChanges();
+
+            }
+
+
             if (!context.Tips.Any())
             {
                 // add tips

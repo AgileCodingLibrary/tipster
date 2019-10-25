@@ -193,6 +193,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BillingPlansController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LandingPagesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\QuestionsController.cs" />
     <Compile Include="Controllers\SubscribersController.cs" />
@@ -1085,6 +1086,12 @@
     <Content Include="Views\Tips\Index.cshtml" />
     <Content Include="Views\Shared\_ExistingSubscription.cshtml" />
     <Content Include="Views\Tips\Edit - Copy.cshtml" />
+    <Content Include="Views\Home\Index - Copy.cshtml" />
+    <Content Include="Views\LandingPages\Create.cshtml" />
+    <Content Include="Views\LandingPages\Delete.cshtml" />
+    <Content Include="Views\LandingPages\Details.cshtml" />
+    <Content Include="Views\LandingPages\Edit.cshtml" />
+    <Content Include="Views\LandingPages\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
