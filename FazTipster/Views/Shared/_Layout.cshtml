@@ -29,6 +29,31 @@
 
 <body>
 
+    @*Facebook login scripts*@
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '{your-app-id}',
+                cookie: true,
+                xfbml: true,
+                version: 'v4.0'
+            });
+
+            FB.AppEvents.logPageView();
+
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) { return; }
+            js = d.createElement(s); js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+    @*End of Facebook login scripts*@
+
     <script>
         window.fbAsyncInit = function () {
             FB.init({
@@ -103,7 +128,7 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin<b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     @*<li>@Html.ActionLink("Billing Plans", "Index", "BillingPlans")</li>
-        <li>@Html.ActionLink("Subscriptions", "Index", "Subscription")</li>*@
+                                        <li>@Html.ActionLink("Subscriptions", "Index", "Subscription")</li>*@
                                     <li>@Html.ActionLink("Subscribers", "Index", "Subscribers")</li>
 
                                     <li>@Html.ActionLink("Edit Home", "Edit", "LandingPages")</li>
