@@ -43,6 +43,8 @@ namespace FazTipster.Models
         public DbSet<Entities.Questions> Questions { get; set; }
         public DbSet<About> Abouts { get; set; }
         public DbSet<Tips> Tips { get; set; }
+
+        public DbSet<LandingPage> LandingPages { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

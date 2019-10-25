@@ -200,6 +200,7 @@
     <Compile Include="Controllers\TipsController.cs" />
     <Compile Include="Entities\About.cs" />
     <Compile Include="Entities\BaseEntity.cs" />
+    <Compile Include="Entities\LandingPage.cs" />
     <Compile Include="Entities\Questions.cs" />
     <Compile Include="Entities\Subscription.cs" />
     <Compile Include="Global.asax.cs">
@@ -252,6 +253,10 @@
     <Compile Include="Migrations\201905221703291_AddingTipsModel.cs" />
     <Compile Include="Migrations\201905221703291_AddingTipsModel.Designer.cs">
       <DependentUpon>201905221703291_AddingTipsModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910250944434_LandingPage.cs" />
+    <Compile Include="Migrations\201910250944434_LandingPage.Designer.cs">
+      <DependentUpon>201910250944434_LandingPage.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -1133,6 +1138,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905221703291_AddingTipsModel.resx">
       <DependentUpon>201905221703291_AddingTipsModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910250944434_LandingPage.resx">
+      <DependentUpon>201910250944434_LandingPage.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

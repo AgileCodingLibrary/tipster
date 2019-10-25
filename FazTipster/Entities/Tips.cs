@@ -29,4 +29,6 @@ namespace FazTipster.Entities
         [DataType(DataType.MultilineText)]
         public string UltimateTips { get; set; }
     }
+
+
 }
