@@ -464,6 +464,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\Irish-horce-racing-home-image.jpg" />
+    <Content Include="images\uk-sports-home-image.jpg" />
     <Content Include="Public\css\animate.css" />
     <Content Include="Public\css\bootstrap-theme.css" />
     <Content Include="Public\css\bootstrap-theme.min.css" />

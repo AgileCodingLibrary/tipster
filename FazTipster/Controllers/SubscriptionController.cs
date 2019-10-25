@@ -33,50 +33,52 @@ namespace FazTipster.Controllers
             var currentUserId = User.Identity.GetUserId();
             var currentUser = _dbContext.Users.Where(x => x.Id == currentUserId).FirstOrDefault();
 
-            if (currentUser.SubscriptionId != null && currentUser.SubscriptionState.ToLower() == "active" || currentUser.SubscriptionState.ToLower() == "pending")
+            if (currentUser.SubscriptionId != null)
             {
-
-                var existingSubscription = new ExistingSubscriptionVM
+                if (currentUser.SubscriptionState.ToLower() == "active" || currentUser.SubscriptionState.ToLower() == "pending")
                 {
-                    //Plan = Models.Subscription.Plan.Plans.FirstOrDefault(x => x.PayPalPlanId == id),
-                    FirstName = currentUser.FirstName,
-                    LastName = currentUser.LastName,
-                    Email = currentUser.Email,
-                    PlanName = currentUser.SubscriptionDescription,
-                    PaypalAgreement = currentUser.PayPalAgreementId
-                };
 
-                return View("_ExistingSubscription", existingSubscription);
+                    var existingSubscription = new ExistingSubscriptionVM
+                    {
+                        //Plan = Models.Subscription.Plan.Plans.FirstOrDefault(x => x.PayPalPlanId == id),
+                        FirstName = currentUser.FirstName,
+                        LastName = currentUser.LastName,
+                        Email = currentUser.Email,
+                        PlanName = currentUser.SubscriptionDescription,
+                        PaypalAgreement = currentUser.PayPalAgreementId
+                    };
 
-                ////check which subscription current user has
-                //if (currentUser.SubscriptionDescription == "AndyTipster Monthly Package")
-                //{
-                //    //user has Andy Tipster regular package
-                //    return View("_ExistingSubscription", existingSubscription);
+                    return View("_ExistingSubscription", existingSubscription);
 
-                //}
-                //else if (currentUser.SubscriptionDescription == "AndyTipster Three Months Package")
-                //{
-                //    //user has Andy Tipster 3 months package
-                //}
-                //else if (currentUser.SubscriptionDescription == "Irish Horse Racing - Monthly Subscription")
-                //{
-                //    //user has Irish Racing regular package
-                //}
-                //else if (currentUser.SubscriptionDescription == "Irish Horse Racing - Three Months Subscription")
-                //{
-                //    //user has Irish 3 months package
-                //}
-                //else if (currentUser.SubscriptionDescription == "Ultimate pack - Monthly Subscription")
-                //{
-                //    //user has Ultimate regular package
-                //}
-                //else if (currentUser.SubscriptionDescription == "Ultimate pack - Three Months Subscription")
-                //{
-                //    //user has Ultimate 3 months package
-                //}
+                    ////check which subscription current user has
+                    //if (currentUser.SubscriptionDescription == "AndyTipster Monthly Package")
+                    //{
+                    //    //user has Andy Tipster regular package
+                    //    return View("_ExistingSubscription", existingSubscription);
+
+                    //}
+                    //else if (currentUser.SubscriptionDescription == "AndyTipster Three Months Package")
+                    //{
+                    //    //user has Andy Tipster 3 months package
+                    //}
+                    //else if (currentUser.SubscriptionDescription == "Irish Horse Racing - Monthly Subscription")
+                    //{
+                    //    //user has Irish Racing regular package
+                    //}
+                    //else if (currentUser.SubscriptionDescription == "Irish Horse Racing - Three Months Subscription")
+                    //{
+                    //    //user has Irish 3 months package
+                    //}
+                    //else if (currentUser.SubscriptionDescription == "Ultimate pack - Monthly Subscription")
+                    //{
+                    //    //user has Ultimate regular package
+                    //}
+                    //else if (currentUser.SubscriptionDescription == "Ultimate pack - Three Months Subscription")
+                    //{
+                    //    //user has Ultimate 3 months package
+                    //}
+                }
             }
-
             var model = new PurchaseVm()
             {
                 Plan = Models.Subscription.Plan.Plans.FirstOrDefault(x => x.PayPalPlanId == id),
@@ -132,7 +134,7 @@ namespace FazTipster.Controllers
                 // Save the token so we can match the returned request to our subscription.
                 subscription.PayPalAgreementToken = createdAgreement.token;
                 subscription.PayPalPlanName = createdAgreement.name;
-                
+
                 _dbContext.SaveChanges();
 
                 // Find the Approval URL to send our user to

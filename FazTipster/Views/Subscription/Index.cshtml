@@ -8,8 +8,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h2>PayPal Subscriptions</h2>
-                    <p>This is the list of subscription setup in your PayPal account. These are your sale items.</p>
+                    <h2>AndyTipster Tips Paypal Subscriptions</h2>
+                    <p>Once subscribe you will be able to manage them in your PapPal account.</p>
                     
                 </div>
             </div>
@@ -20,7 +20,7 @@
     <div class="container">
         <div class="row confirm">
             <div class="col-md-12">
-                <table class="table">
+                <table class="table table-striped">
                     <thead>
                         <tr>
                             <th>Plan</th>
@@ -37,7 +37,7 @@
                                 <td>@(item.Description).</td>
                                 <td class="text-right">£@((item.Price / 100M).ToString("0.00"))</td>
                                 <td class="text-right">
-                                    @*<a href="@Url.Action("Purchase", "Subscription", new {id = item.PayPalPlanId})" class="btn btn-primary">Subscribe</a>*@
+                                    <a href="@Url.Action("Purchase", "Subscription", new {id = item.PayPalPlanId})" class="btn btn-primary">Subscribe</a>
                                 </td>
                             </tr>
                         }

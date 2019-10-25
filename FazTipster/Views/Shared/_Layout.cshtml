@@ -104,10 +104,10 @@
                     <ul class="nav navbar-nav nav-left">
                         <li>@Html.ActionLink("Home", "Index", "Home")</li>
                         <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li class="btn btn-success">@Html.ActionLink("Subscriptions", "Index", "Subscription")</li>
                         <li>@Html.ActionLink("FAQ", "Faq", "Home")</li>
                         <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                        @*<li><a href="">Facebook</a></li>*@
-
+                        
 
                         @if (User.Identity.IsAuthenticated)
                         {
@@ -128,9 +128,7 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin<b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     <li>@Html.ActionLink("Billing Plans", "Index", "BillingPlans")</li>
-                                        <li>@Html.ActionLink("Subscriptions", "Index", "Subscription")</li>
                                     <li>@Html.ActionLink("Subscribers", "Index", "Subscribers")</li>
-
                                     <li>@Html.ActionLink("Edit Home", "Edit", "LandingPages")</li>
                                     <li>@Html.ActionLink("Edit About", "Edit", new { controller = "Abouts", id = 1 })</li>
                                     <li>@Html.ActionLink("Edit FAQ", "Index", "Questions")</li>

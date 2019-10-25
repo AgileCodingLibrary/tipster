@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using PagedList;
 using FazTipster.ViewModels;
+using System.Text;
 
 namespace FazTipster.Controllers
 {
@@ -31,7 +32,7 @@ namespace FazTipster.Controllers
 
             var tips = _dbContext.Tips.FirstOrDefault();
 
-            if (currentUser.PayPalAgreementId != null )
+            if (currentUser.PayPalAgreementId != null)
             {
                 var agreement = Agreement.Get(apiContext, currentUser.PayPalAgreementId);
 
@@ -43,7 +44,7 @@ namespace FazTipster.Controllers
                 if (currentUser.SubscriptionState == "Active" && currentUser.SubscriptionDescription == "AndyTipster Monthly Package" ||
                     currentUser.SubscriptionState == "Active" && currentUser.SubscriptionDescription == "AndyTipster Three Months Package" ||
                      currentUser.SubscriptionState == "Active" && currentUser.SubscriptionDescription == "Ultimate pack - Monthly Subscription" ||
-                     currentUser.SubscriptionState == "Active" && currentUser.SubscriptionDescription == "Ultimate pack - Three Months Subscription" )
+                     currentUser.SubscriptionState == "Active" && currentUser.SubscriptionDescription == "Ultimate pack - Three Months Subscription")
                 {
                     return View(tips);
                 }
@@ -115,7 +116,7 @@ namespace FazTipster.Controllers
                 }
 
                 if (currentUser.SubscriptionState == "Active" && currentUser.SubscriptionDescription == "Ultimate pack - Monthly Subscription" ||
-                     currentUser.SubscriptionState == "Active" && currentUser.SubscriptionDescription == "Ultimate pack - Three Months Subscription" )
+                     currentUser.SubscriptionState == "Active" && currentUser.SubscriptionDescription == "Ultimate pack - Three Months Subscription")
                 {
                     return View(tips);
                 }
@@ -166,18 +167,44 @@ namespace FazTipster.Controllers
             return View();
         }
 
+
         [Authorize(Roles = "Masteradmin")]
-        public ActionResult EmailList()
+        [HttpGet]
+        public FileContentResult EmailList()
         {
-            List<EmailListViewModel> vm = _dbContext.Users.Where(y => y.SendEmails == true).Select( x => 
-            new EmailListViewModel() {
+            var csvString = GenerateCSVString();
+            var fileName = "AndyTipsterEmails " + DateTime.Now.ToString() + ".csv";
+            return File(new System.Text.UTF8Encoding().GetBytes(csvString), "text/csv", fileName);
+        }
 
-                FirstName = x.FirstName,
-                LastName = x.LastName,
-                Email = x.Email
-            }).ToList();
+        private string GenerateCSVString()
+        {
+            List<EmailListViewModel> users = _dbContext.Users.ToList().Select(x =>
+          new EmailListViewModel()
+          {
 
-            return View(vm);
+              FirstName = x.FirstName,
+              LastName = x.LastName,
+              Email = x.Email
+          }).ToList();
+
+            StringBuilder sb = new StringBuilder();
+            sb.Append("FirstName");
+            sb.Append(",");
+            sb.Append("LastName");
+            sb.Append(",");
+            sb.Append("Email");
+            sb.AppendLine();
+            foreach (var user in users)
+            {
+                sb.Append(user.FirstName != null ? user.FirstName : "Not given");
+                sb.Append(",");
+                sb.Append(user.LastName != null ? user.LastName : "Not given");
+                sb.Append(",");
+                sb.Append(user.Email);
+                sb.AppendLine();
+            }
+            return sb.ToString();
         }
 
         private APIContext GetApiContext()
