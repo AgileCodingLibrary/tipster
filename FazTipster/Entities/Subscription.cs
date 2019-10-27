@@ -16,5 +16,6 @@ namespace FazTipster.Entities
         public string PayPalAgreementId { get; set; }
         public string PayPalPlanName { get; set; }
         public string PayPalPaymentEmail { get; set; }
+        //public string Status { get; set; }
     }
 }

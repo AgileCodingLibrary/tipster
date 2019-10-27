@@ -539,7 +539,6 @@
     <Content Include="Content\Template\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\Template\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\Template\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="Content\Template\img\slider-1-slide-1.psd" />
     <Content Include="Content\Template\Templates\master.dwt" />
     <Content Include="Content\Template\Templates\_notes\master.dwt.mno" />
     <Content Include="Scripts\ckeditor\adapters\jquery.js" />
@@ -547,6 +546,7 @@
     <Content Include="Scripts\ckeditor\ckeditor.asp" />
     <Content Include="Scripts\ckeditor\ckeditor.js" />
     <Content Include="Scripts\ckeditor\ckeditor.pack" />
+    <None Include="Properties\PublishProfiles\AndyTipster - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\ckeditor\ckeditor.php" />
     <Content Include="Scripts\ckeditor\ckeditor_basic.js" />

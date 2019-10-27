@@ -39,24 +39,24 @@ namespace FazTipster.Controllers
         //    return RedirectToAction("Index");
         //}
 
-        //public ActionResult DeleteAll()
-        //{
-        //    var apiContext = GetApiContext();
+        public ActionResult DeleteAll()
+        {
+            var apiContext = GetApiContext();
 
-        //    var list = PayPal.Api.Plan.List(apiContext, status: "ACTIVE");
+            var list = PayPal.Api.Plan.List(apiContext, status: "ACTIVE");
 
-        //    foreach (var plan in list.plans)
-        //    {
-        //        var deletePlan = new Plan()
-        //        {
-        //            id = plan.id
-        //        };
+            foreach (var plan in list.plans)
+            {
+                var deletePlan = new Plan()
+                {
+                    id = plan.id
+                };
 
-        //        deletePlan.Delete(apiContext);
-        //    }
+                deletePlan.Delete(apiContext);
+            }
 
-        //    return RedirectToAction("Index");
-        //}
+            return RedirectToAction("Index");
+        }
 
         /// <summary>
         /// Create the default billing plans for this example website

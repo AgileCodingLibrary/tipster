@@ -24,6 +24,29 @@ namespace FazTipster.Migrations
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
 
+            if (!context.Roles.Any(r => r.Name == "Masteradmin"))
+            {
+                var store = new RoleStore<IdentityRole>(context);
+                var manager = new RoleManager<IdentityRole>(store);
+                var role = new IdentityRole { Name = "Masteradmin" };
+
+                manager.Create(role);
+            }
+
+            if (!context.Users.Any(u => u.UserName == "fazahmed786"))
+            {
+                var store = new UserStore<ApplicationUser>(context);
+                var manager = new UserManager<ApplicationUser>(store);
+                var faz = new ApplicationUser { UserName = "fazahmed786@hotmail.com", Email = "fazahmed786@hotmail.com" };
+                var andy = new ApplicationUser { UserName = "andytipster99@outlook.com", Email = "andytipster99@outlook.com" };
+
+                manager.Create(faz, "Abcd123$");
+                manager.AddToRole(faz.Id, "Masteradmin");
+
+                manager.Create(andy, "Tipsters99$");
+                manager.AddToRole(andy.Id, "Masteradmin");
+            }
+
             if (!context.LandingPages.Any())
             {
                 Entities.LandingPage landingPage = new Entities.LandingPage();
@@ -84,24 +107,7 @@ namespace FazTipster.Migrations
             }
 
 
-            if (!context.Roles.Any(r => r.Name == "Masteradmin"))
-            {
-                var store = new RoleStore<IdentityRole>(context);
-                var manager = new RoleManager<IdentityRole>(store);
-                var role = new IdentityRole { Name = "Masteradmin" };
 
-                manager.Create(role);
-            }
-
-            if (!context.Users.Any(u => u.UserName == "fazahmed786"))
-            {
-                var store = new UserStore<ApplicationUser>(context);
-                var manager = new UserManager<ApplicationUser>(store);
-                var user = new ApplicationUser { UserName = "fazahmed786@hotmail.com", Email = "fazahmed786@hotmail.com" };
-
-                manager.Create(user, "Abcd123$");
-                manager.AddToRole(user.Id, "Masteradmin");
-            }
 
         }
     }

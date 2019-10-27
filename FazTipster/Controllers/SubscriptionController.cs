@@ -93,7 +93,9 @@ namespace FazTipster.Controllers
         [HttpPost]
         public ActionResult Purchase(PurchaseVm model)
         {
+           
             var plan = Models.Subscription.Plan.Plans.FirstOrDefault(x => x.PayPalPlanId == model.Plan.PayPalPlanId);
+
 
             if (ModelState.IsValid)
             {
