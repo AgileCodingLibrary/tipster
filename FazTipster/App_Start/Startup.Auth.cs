@@ -54,9 +54,13 @@ namespace FazTipster
             //   consumerKey: "",
             //   consumerSecret: "");
 
+            //app.UseFacebookAuthentication(
+            //   appId: "2648364038588445",
+            //   appSecret: "7d3fc8cfe5f419770718ccd6846db9ac");
+
             app.UseFacebookAuthentication(
-               appId: "2648364038588445",
-               appSecret: "7d3fc8cfe5f419770718ccd6846db9ac");
+               appId: "1410876402410582",
+               appSecret: "03df143c3bb7209088396c309afe2f45");
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{
